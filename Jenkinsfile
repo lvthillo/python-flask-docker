@@ -3,7 +3,11 @@ pipeline {
         label "jenkins-python"
     }
     environment {
+<<<<<<< HEAD
       ORG               = 'lvthillo'
+=======
+      ORG               = 'bilelismail'
+>>>>>>> fec35b6550816426c9a680808545c9ab80097c4b
       APP_NAME          = 'python-flask-docker'
       CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
     }
