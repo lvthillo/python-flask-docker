@@ -1,0 +1,43 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  tagPolicy:
+    envTemplate:
+<<<<<<< HEAD
+      template: "{{.DOCKER_REGISTRY}}/lvthillo/python-flask-docker:{{.VERSION}}"
+=======
+      template: "{{.DOCKER_REGISTRY}}/bilelismail/python-flask-docker:{{.VERSION}}"
+>>>>>>> fec35b6550816426c9a680808545c9ab80097c4b
+  artifacts:
+  - imageName: changeme
+    workspace: .
+    docker: {}
+  local: {}
+deploy:
+  kubectl:
+    manifests:
+profiles:
+- name: dev
+  build:
+    tagPolicy:
+      envTemplate:
+<<<<<<< HEAD
+        template: "{{.DOCKER_REGISTRY}}/lvthillo/python-flask-docker:{{.DIGEST_HEX}}"
+=======
+        template: "{{.DOCKER_REGISTRY}}/bilelismail/python-flask-docker:{{.DIGEST_HEX}}"
+>>>>>>> fec35b6550816426c9a680808545c9ab80097c4b
+    artifacts:
+    - docker: {}
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: python-flask-docker
+        chartPath: charts/python-flask-docker
+        setValueTemplates:
+<<<<<<< HEAD
+          image.repository: "{{.DOCKER_REGISTRY}}/lvthillo/python-flask-docker"
+=======
+          image.repository: "{{.DOCKER_REGISTRY}}/bilelismail/python-flask-docker"
+>>>>>>> fec35b6550816426c9a680808545c9ab80097c4b
+          image.tag: "{{.TAG}}"
