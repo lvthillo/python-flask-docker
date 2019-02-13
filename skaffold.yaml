@@ -1,0 +1,30 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  artifacts:
+  - image: changeme
+    context: .
+    docker: {}
+  tagPolicy:
+    envTemplate:
+      template: '{{.DOCKER_REGISTRY}}/ismaeifm/python-flask-docker:{{.VERSION}}'
+  local: {}
+deploy:
+  kubectl: {}
+profiles:
+- name: dev
+  build:
+    artifacts:
+    - docker: {}
+    tagPolicy:
+      envTemplate:
+        template: '{{.DOCKER_REGISTRY}}/ismaeifm/python-flask-docker:{{.DIGEST_HEX}}'
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: python-flask-docker
+        chartPath: charts/python-flask-docker
+        setValueTemplates:
+          image.repository: '{{.DOCKER_REGISTRY}}/ismaeifm/python-flask-docker'
+          image.tag: '{{.DIGEST_HEX}}'
