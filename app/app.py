@@ -13,5 +13,12 @@ def index():
         return render_template('error.html')
 
 
+@app.route("/test/<text>", methods=['GET'])
+def page_one(text):
+    try:
+        return render_template('test.html', text=text)
+    except:
+        return render_template('error.html')
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
