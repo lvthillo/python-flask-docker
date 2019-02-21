@@ -7,7 +7,7 @@ build:
     docker: {}
   tagPolicy:
     envTemplate:
-      template: '{{.DOCKER_REGISTRY}}/zmailloux/python-flask-docker:{{.VERSION}}'
+      template: '{{.DOCKER_REGISTRY}}/es-devops-d/python-flask-docker:{{.VERSION}}'
   local: {}
 deploy:
   kubectl: {}
@@ -18,7 +18,7 @@ profiles:
     - docker: {}
     tagPolicy:
       envTemplate:
-        template: '{{.DOCKER_REGISTRY}}/zmailloux/python-flask-docker:{{.DIGEST_HEX}}'
+        template: '{{.DOCKER_REGISTRY}}/es-devops-d/python-flask-docker:{{.DIGEST_HEX}}'
     local: {}
   deploy:
     helm:
@@ -26,5 +26,5 @@ profiles:
       - name: python-flask-docker
         chartPath: charts/python-flask-docker
         setValueTemplates:
-          image.repository: '{{.DOCKER_REGISTRY}}/zmailloux/python-flask-docker'
+          image.repository: '{{.DOCKER_REGISTRY}}/es-devops-d/python-flask-docker'
           image.tag: '{{.DIGEST_HEX}}'

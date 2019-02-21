@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
+  repository: gcr.io/es-devops-d/python-flask-docker
   tag: dev
   pullPolicy: IfNotPresent
 service:

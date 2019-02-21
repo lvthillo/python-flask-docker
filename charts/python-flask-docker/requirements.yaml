@@ -1,0 +1,7 @@
+# !! File must end with empty line !!
+dependencies:
+- alias: mongo
+  name: stable/mongodb
+  repository: https://github.com/helm/charts/tree/master/stable/mongodb
+  version: 5.4.0
+
