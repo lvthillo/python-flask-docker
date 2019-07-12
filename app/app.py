@@ -15,4 +15,5 @@ def index():
 
 if __name__ == "__main__":
     print('DEBUG: port=8080')
+    print('Welcome')
     app.run(host='0.0.0.0', port=8080)
