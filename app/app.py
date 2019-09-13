@@ -1,7 +1,8 @@
-from flask import Flask,render_template
+from flask import Flask, render_template
 import socket
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def index():
@@ -9,9 +10,15 @@ def index():
         host_name = socket.gethostname()
         host_ip = socket.gethostbyname(host_name)
         return render_template('index.html', hostname=host_name, ip=host_ip)
-    except:
+    except Exception:
         return render_template('error.html')
+
+
+@app.route("/health")
+def health():
+    return {"is_healthy": True}
 
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
+    print("Service is shutting down..")

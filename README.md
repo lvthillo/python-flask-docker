@@ -1,23 +1,21 @@
 # python-flask-docker
-Basic Python Flask app in Docker which prints the hostname and IP of the container
+Basic Python Flask app in Docker (slim and best practices standards) which prints the hostname and IP of the container
 
 ### Build application
-Build the Docker image manually by cloning the Git repo.
 ```
-$ git clone https://github.com/lvthillo/python-flask-docker.git
-$ docker build -t lvthillo/python-flask-docker .
+docker-compose build
 ```
 
 ### Download precreated image
-You can also just download the existing image from [DockerHub](https://hub.docker.com/r/lvthillo/python-flask-docker/).
+You can also just download the existing image from [DockerHub](https://hub.docker.com/r/look4regev/python-flask-docker/).
 ```
-docker pull lvthillo/python-flask-docker
+docker pull look4regev/python-flask-docker
 ```
 
 ### Run the container
 Create a container from the image.
 ```
-$ docker run --name my-container -d -p 8080:8080 lvthillo/python-flask-docker
+docker-compose up
 ```
 
 Now visit http://localhost:8080
@@ -34,4 +32,10 @@ $ docker inspect -f '{{ .Config.Hostname }}' my-container
 6095273a4e9b
 ```
 
+### Running service in dev-debug-watch-on-changes mode outside of container 
+```
+FLASK_APP=app/app.py FLASK_ENV=development flask run
+```
 
+### Running the service in development mode inside the container with watch on changes
+TBD- Basically add mounts to the code path and run flask in development mode
