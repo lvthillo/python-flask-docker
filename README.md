@@ -1,4 +1,6 @@
 # python-flask-docker
+[![Actions Status](https://github.com/look4regev/python-flask-docker/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/look4regev/python-flask-docker/actions)
+
 Basic Python Flask app in Docker (slim and best practices standards) which prints the hostname and IP of the container
 
 ### Build application
