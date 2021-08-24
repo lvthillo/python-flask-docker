@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM public.ecr.aws/sam/build-python3.6:latest
 LABEL maintainer="lorenz.vanthillo@gmail.com"
 COPY . /app
 WORKDIR /app
