@@ -6,9 +6,8 @@ phases:
       - echo Logging in to Amazon ECR...
       - AccountID=$(aws sts get-caller-identity --query Account --output text)
       - CommitID="$(echo $GitCommitID | head -c 8)"
-      - $(aws ecr get-login --registry-ids $AccountID --no-include-email --region ${AWS_DEFAULT_REGION})
+      - $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
       - REPOSITORY_URI=545553504856.dkr.ecr.us-west-2.amazonaws.com/python-example
-      - CommitID=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
