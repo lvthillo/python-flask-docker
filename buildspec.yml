@@ -8,6 +8,7 @@ phases:
       - CommitID="$(echo $GitCommitID | head -c 8)"
       - $(aws ecr get-login --registry-ids $AccountID --no-include-email --region ${AWS_DEFAULT_REGION})
       - REPOSITORY_URI=545553504856.dkr.ecr.us-west-2.amazonaws.com/python-example
+      - echo ${CommitID}
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
