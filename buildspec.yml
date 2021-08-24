@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - AccountID=$(aws sts get-caller-identity --query Account --output text)
+      - CommitID="$(echo $GitCommitID | head -c 8)"
+      - $(aws ecr get-login --registry-ids $AccountID --no-include-email --region ${AWS_DEFAULT_REGION})
+      - REPOSITORY_URI=545553504856.dkr.ecr.us-west-2.amazonaws.com/python-example
+      - CommitID=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t ${REPOSITORY_URI}:${CommitID} .
+      - docker tag ${REPOSITORY_URI}:${CommitID} ${REPOSITORY_URI}:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push ${REPOSITORY_URI}:${CommitID}
+      - docker push ${REPOSITORY_URI}:latest
+      - printf '[{"name":"python-example","imageUri":"545553504856.dkr.ecr.us-west-2.amazonaws.com/python-example:latest"}]' > imagedefinitions.json
+      - cat imagedefinitions.json
+artifacts:
+    files:
+      - imagedefinitions.json
