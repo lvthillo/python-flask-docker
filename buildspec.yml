@@ -14,7 +14,7 @@ phases:
       - CommitID=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - echo ${CommitID}
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
-      - aws codeguru-reviewer create-code-review --name python-flask-docker --repository-association-arn arn:aws:codeguru-reviewer:us-west-2:545553504856:association:65d75146-b6b1-41ff-94a4-50874f09be06:code-review:RepositoryAnalysis-python-flask-docker-master-aa7cf65d-0f9d-4724-bcff-5f01d1e7a14e --type RepositoryAnalysis
+      - $(aws codeguru-reviewer create-code-review --name python-flask-docker --repository-association-arn arn:aws:codeguru-reviewer:us-west-2:545553504856:association:65d75146-b6b1-41ff-94a4-50874f09be06:code-review:RepositoryAnalysis-python-flask-docker-master-aa7cf65d-0f9d-4724-bcff-5f01d1e7a14e --type RepositoryAnalysis)
   build:
     commands:
       - echo Build started on `date`
