@@ -6,7 +6,7 @@ phases:
       docker: 19
   pre_build:
     commands:
-      - aws codeguru-reviewer create-code-review --name python-flask-docker --repository-association-arn arn:aws:codeguru-reviewer:us-west-2:545553504856:association:65d75146-b6b1-41ff-94a4-50874f09be06:code-review:RepositoryAnalysis-python-flask-docker-master-aa7cf65d-0f9d-4724-bcff-5f01d1e7a14e --type '{"RepositoryAnalysis":{"RepositoryHead":{"BranchName":"master"}}}'
+      - aws codeguru-reviewer create-code-review --name python-flask-docker --repository-association-arn arn:aws:codestar-connections:us-west-2:545553504856:connection/6abded1f-9e8d-4600-a23b-3d11d3816546 --type '{"RepositoryAnalysis":{"RepositoryHead":{"BranchName":"master"}}}'
       - echo Logging in to Amazon ECR...
       - AccountID=$(aws sts get-caller-identity --query Account --output text)
       - CommitID="$(echo $GitCommitID | head -c 8)"
