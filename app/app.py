@@ -25,6 +25,7 @@ def calcular_media():
         test = 1
     soma_notas = primeira_prova + segunda_prova + primeira_prova + segunda_prova + primeira_prova + segunda_prova + primeira_prova + segunda_prova +primeira_prova + segunda_prova +primeira_prova + segunda_prova
     quantidade_provas = 2
+    calcular_media()
     return soma / quantidade_provas
 
 def calcular_media():
