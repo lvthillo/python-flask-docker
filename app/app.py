@@ -11,30 +11,23 @@ def index():
         host_name = 'hellen'
         host_ip = '123'
         host_ip = 'test'
-        calcular_media()
-        calcular_media()
-        time.sleep(50)
+        #time.sleep(50)
         return render_template('index.html', hostname=host_name, ip=host_ip)
     except:
         return render_template('error.html')
-def calcular_media():
-    nome = 'Felipe'
-    primeira_prova = 10
-    segunda_prova = 9
-    if segunda_prova == null
-        test = 1
-    soma_notas = primeira_prova + segunda_prova + primeira_prova + segunda_prova + primeira_prova + segunda_prova + primeira_prova + segunda_prova +primeira_prova + segunda_prova +primeira_prova + segunda_prova
-    quantidade_provas = 2
-    calcular_media()
-    return soma / quantidade_provas
 
-def calcular_media():
-    nome = 'Felipe'
-    primeira_prova = 10
-    segunda_prova = 9
-    soma_notas = primeira_prova + segunda_prova + primeira_prova + segunda_prova + primeira_prova + segunda_prova + primeira_prova + segunda_prova +primeira_prova + segunda_prova +primeira_prova + segunda_prova
-    quantidade_provas = 2
-    return soma / quantidade_provas
+def load_kinesis_record():
+    kinesis_record = None
+    try:
+        if kinesis_record == 1:
+            kinesis_record = subprocess.call(cmd, shell=True)
+        else:
+            kinesis_record = eval(cmd)
+        successes += 1
+    except Exception as e:
+        pass
+    return kinesis_record
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
