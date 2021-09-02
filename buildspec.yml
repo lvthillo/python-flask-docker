@@ -7,8 +7,11 @@ phases:
   pre_build:
     commands:
       - aws codeguru-reviewer create-code-review --name python-flask-docker-$CODEBUILD_RESOLVED_SOURCE_VERSION --repository-association-arn arn:aws:codeguru-reviewer:us-west-2:545553504856:association:fc300954-3098-4f78-b6d4-a8987d06aebe --type '{"RepositoryAnalysis":{"RepositoryHead":{"BranchName":"master"}}}'
-      - aws codeguru-reviewer wait code-review-completed --code-review-arn arn:aws:codeguru-reviewer:us-west-2:545553504856:association:fc300954-3098-4f78-b6d4-a8987d06aebe
-      - aws codeguru-reviewer list-recommendations --code-review-arn arn:aws:codeguru-reviewer:us-west-2:545553504856:association:fc300954-3098-4f78-b6d4-a8987d06aebe
+      - aws codeguru-reviewer list-code-reviews  --type RepositoryAnalysis --repository-names python-flask-docker --state Pending > test.json
+      - ARN=$(jq '.CodeReviewSummaries.CodeReviewArn' test.json)
+      - echo ${ARN}
+      - aws codeguru-reviewer wait code-review-completed --code-review-arn $ARN
+      - aws codeguru-reviewer list-recommendations --code-review-arn $ARN
       - echo Logging in to Amazon ECR...
       - AccountID=$(aws sts get-caller-identity --query Account --output text)
       - CommitID="$(echo $GitCommitID | head -c 8)"

@@ -1,0 +1,15 @@
+{
+    "CodeReviewSummaries": [
+        {
+            "Name": "python-flask-docker-master-b5a8b1e4-a413-42f0-9905-0e6ffa9db8e0",
+            "CodeReviewArn": "arn:aws:codeguru-reviewer:us-west-2:545553504856:association:65d75146-b6b1-41ff-94a4-50874f09be06:code-review:RepositoryAnalysis-python-flask-docker-master-b5a8b1e4-a413-42f0-9905-0e6ffa9db8e0",
+            "RepositoryName": "python-flask-docker",
+            "Owner": "hellenavilarosa",
+            "ProviderType": "GitHub",
+            "State": "Pending",
+            "CreatedTimeStamp": "2021-09-02T10:07:34.218000-03:00",
+            "LastUpdatedTimeStamp": "2021-09-02T10:07:43.856000-03:00",
+            "Type": "RepositoryAnalysis"
+        }
+    ]
+}
