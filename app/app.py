@@ -1,6 +1,9 @@
 from flask import Flask,render_template
 import socket
 import time
+from codeguru_profiler_agent import Profiler
+from boto3.session import Session
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -11,7 +14,7 @@ def index():
         host_name = 'hellen'
         host_ip = '123'
         host_ip = 'test'
-        #time.sleep(50)
+        time.sleep(50)
         return render_template('index.html', hostname=host_name, ip=host_ip)
     except:
         return render_template('error.html')
@@ -30,4 +33,6 @@ def load_kinesis_record():
 
 
 if __name__ == "__main__":
+    Profiler(profiling_group_name='MyProfilingGroup').start()
+    start_application()
     app.run(host='0.0.0.0', port=8080)
