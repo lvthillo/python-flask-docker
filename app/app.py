@@ -12,6 +12,7 @@ def index():
         host_ip = '123'
         host_ip = 'test'
         calcular_media()
+        calcular_media()
         time.sleep(50)
         return render_template('index.html', hostname=host_name, ip=host_ip)
     except:
@@ -20,6 +21,8 @@ def calcular_media():
     nome = 'Felipe'
     primeira_prova = 10
     segunda_prova = 9
+    if segunda_prova == null
+        test = 1
     soma_notas = primeira_prova + segunda_prova + primeira_prova + segunda_prova + primeira_prova + segunda_prova + primeira_prova + segunda_prova +primeira_prova + segunda_prova +primeira_prova + segunda_prova
     quantidade_provas = 2
     return soma / quantidade_provas
