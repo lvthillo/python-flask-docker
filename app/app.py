@@ -2,7 +2,7 @@ from flask import Flask,render_template
 import socket
 import time
 from codeguru_profiler_agent import Profiler
-from boto3.session import Session
+import boto3
 
 app = Flask(__name__)
 
