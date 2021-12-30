@@ -4,6 +4,7 @@ import socket
 app = Flask(__name__)
 
 @app.route("/")
+# entry point for all application
 def index():
     try:
         host_name = socket.gethostname()
