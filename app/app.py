@@ -1,7 +1,8 @@
-from flask import Flask,render_template
+from flask import Flask, render_template
 import socket
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def index():
@@ -9,7 +10,7 @@ def index():
         host_name = socket.gethostname()
         host_ip = socket.gethostbyname(host_name)
         return render_template('index.html', hostname=host_name, ip=host_ip)
-    except:
+    except Exception:
         return render_template('error.html')
 
 
