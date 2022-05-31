@@ -18,7 +18,8 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
       
-      - uses: mr-smithers-excellent/docker-build-push@v5
+      - name: Building and pushing docker image to docker.io
+        uses: mr-smithers-excellent/docker-build-push@v5
         with:
           image: manishsonawane1998/my-repo
           registry: docker.io
