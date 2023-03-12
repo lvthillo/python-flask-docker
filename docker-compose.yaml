@@ -1,0 +1,13 @@
+
+version: "3"
+services:
+  web:
+    build: .
+    ports: ['8080:8080']
+    volumes: ['.:/app']
+    environment:
+      - FLASK_DEBUG=1
+      # - CLIENT_SECRET=
+
+#  redis:
+#    image: redis
