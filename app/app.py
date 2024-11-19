@@ -19,6 +19,12 @@ def health():
     return {"is_healthy": True}
 
 
+@app.route("/user/<user_id>")
+def greet_user(user_id):
+    return f"hello {user_id}"
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
     print("Service is shutting down..")
+
