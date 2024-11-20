@@ -6,7 +6,7 @@ Basic Python Flask app in Docker (slim and best practices standards) which print
 
 ### Build application
 ```
-docker-compose build
+docker compose build
 ```
 
 ### Download precreated image
@@ -18,7 +18,7 @@ docker pull look4regev/python-flask-docker
 ### Run the container
 Create a container from the image.
 ```
-docker-compose up
+docker compose up
 ```
 
 Now visit http://localhost:8080
