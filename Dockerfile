@@ -17,7 +17,7 @@ ENV HOME_DIR=/home/app
 
 RUN groupadd -g 570 app && useradd --create-home -u 568 -g app app
 
-COPY --from=builder /usr/local/lib/python3.7/  /usr/local/lib/python3.7/
+COPY --from=builder /usr/local/lib/python3.12/  /usr/local/lib/python3.12/
 COPY --from=builder $HOME_DIR/venv  $HOME_DIR/venv
 
 ADD ./* $HOME_DIR/
