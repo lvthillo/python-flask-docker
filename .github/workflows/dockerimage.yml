@@ -10,5 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker-compose build
+    
+    - uses: docker/compose-action@v2
+        with:
+            command: build
