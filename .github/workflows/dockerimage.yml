@@ -11,5 +11,25 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
+    - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt requirements-dev.txt
+
+      # Run Black (format check)
+      - name: Run Black
+        run: |
+          black --check .
+
+      # Run Pylint
+      - name: Run Pylint
+        run: |
+          pylint $(find . -name "*.py" | xargs)
+
     - name: Build Docker Compose services
       run: docker compose build
