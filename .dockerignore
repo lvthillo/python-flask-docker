@@ -1,0 +1,10 @@
+# Git
+.git
+.gitignore
+
+# GitHub actions
+.github/
+
+# Documentation
+LICENSE
+README.md
