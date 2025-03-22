@@ -1,10 +1,9 @@
-name: Auto-merge Dependabot PRs and Build Docker Image
+name: Auto-merge Dependabot PRs
 
 on:
-  pull_request:
-    branches: [ master ]
   pull_request_target:
     branches: [ master ]
+    types: [opened, synchronize]
 
 jobs:
   auto-merge:
@@ -29,34 +28,3 @@ jobs:
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-  build-and-push:
-    needs: auto-merge
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true && github.actor == 'dependabot[bot]'
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-        
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          context: .
-          tags: |
-            lvthillo/python-flask-docker:latest
-            lvthillo/python-flask-docker:${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
