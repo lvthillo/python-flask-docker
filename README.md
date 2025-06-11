@@ -41,5 +41,6 @@ $ docker inspect -f '{{ .Config.Hostname }}' my-container
 4. docker build --build-arg APP_PORT=7070 -t pyflask:1 .
 5. docker run -d -p 8080:8080 pyflask:1
 6. docker rm -f $(docker ps -aq) ; docker rmi -f $(docker images -q) --> !! Careful !! To delete all images & Containers
+7. git add . ; git commit -m "updated" ; git push origin feature/test
 
 
